@@ -1,38 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact - Fanglin Xu</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanglin Xu - Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P One&family=Inter:wght@300;400;500;600&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blush: #D87FA3;
+            --light-coral: #E6A894;
+            --cafe-noir: #6B4A3A;
+            --satin-gold: #C29F5C;
+            --arylide-yellow: #F2E394;
+            --cream: #F7F4F0;
+            --soft-brown: #8B6F47;
+            --text-light: #E8DDD4;
+            --text-warm: #D4C4B0;
+            --bg-dark: #2D1B0E;
+            --bg-card: rgba(107, 74, 58, 0.15);
+            --accent-glow: rgba(242, 227, 148, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #2D1B0E;
+            color: var(--text-light);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(45, 27, 14, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(242, 227, 148, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Mochiy Pop P One', cursive;
+            font-size: 1.5rem;
+            color: var(--arylide-yellow);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--blush);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-warm);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            color: var(--arylide-yellow);
+            background: rgba(242, 227, 148, 0.1);
+        }
+
+        .nav-links a.active {
+            color: var(--satin-gold);
+            background: rgba(194, 159, 92, 0.1);
+        }
+
+        /* Main content */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .page-title {
+            font-family: 'Mochiy Pop P One', cursive;
+            font-size: 3.5rem;
+            color: var(--arylide-yellow);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(242, 227, 148, 0.3);
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-warm);
+            margin-bottom: 15px;
+        }
+
+        .cute-divider {
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+
+        /* Contact content */
+        .contact-content {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(242, 227, 148, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blush), var(--satin-gold), var(--arylide-yellow));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-intro h2 {
+            font-family: 'Mochiy Pop P One', cursive;
+            font-size: 2.2rem;
+            color: var(--satin-gold);
+            margin-bottom: 20px;
+        }
+
+        .contact-intro p {
+            font-size: 1.15rem;
+            color: var(--text-warm);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-card {
+            background: rgba(242, 227, 148, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(242, 227, 148, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(242, 227, 148, 0.08);
+            border-color: rgba(242, 227, 148, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .contact-card h3 {
+            font-family: 'Mochiy Pop P One', cursive;
+            font-size: 1.3rem;
+            color: var(--satin-gold);
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            color: var(--text-warm);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--blush);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: rgba(216, 127, 163, 0.1);
+        }
+
+        .contact-link:hover {
+            background: rgba(216, 127, 163, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .highlight-text {
+            background: linear-gradient(135deg, var(--arylide-yellow), var(--satin-gold));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        /* Fun section */
+        .fun-section {
+            background: rgba(194, 159, 92, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            border: 1px dashed rgba(194, 159, 92, 0.2);
+        }
+
+        .fun-section h3 {
+            font-family: 'Mochiy Pop P One', cursive;
+            font-size: 1.8rem;
+            color: var(--satin-gold);
+            margin-bottom: 25px;
+        }
+
+        .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .fun-fact {
+            background: rgba(242, 227, 148, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(242, 227, 148, 0.1);
+        }
+
+        .fun-fact-emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .fun-fact p {
+            color: var(--text-warm);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .availability-status {
+            background: linear-gradient(135deg, var(--blush), var(--light-coral));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(216, 127, 163, 0.3);
+        }
+
+        /* Scattered decorative elements */
+        .emoji-scatter {
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0.4;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .scatter-1 { top: 150px; right: 100px; animation-delay: 0s; }
+        .scatter-2 { bottom: 200px; left: 80px; animation-delay: 1s; }
+        .scatter-3 { top: 300px; right: 200px; animation-delay: 2s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .content-wrapper {
+                padding: 40px 20px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-content {
+                padding: 35px 25px;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .fun-facts {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .contact-intro h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="bg-dark text-white py-4">
-    <div class="container d-flex justify-content-between align-items-center">
-      <h1 class="mb-0 fw-bold">Fanglin Xu</h1>
-      <nav>
-        <a href="index.html" class="text-pink me-3">Home</a>
-        <a href="aboutme.html" class="text-pink me-3">About</a>
-        <a href="project.html" class="text-pink me-3">Projects</a>
-        <a href="contact.html" class="text-pink">Contact</a>
-      </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">fanglin xu</a>
+            <ul class="nav-links">
+                <li><a href="aboutme.html">about</a></li>
+                <li><a href="project.html">projects</a></li>
+                <li><a href="contact.html" class="active">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Scattered decorative elements -->
+        <div class="emoji-scatter scatter-1">💌</div>
+        <div class="emoji-scatter scatter-2">☕</div>
+        <div class="emoji-scatter scatter-3">🌸</div>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">let's connect!</h1>
+            <p class="page-subtitle">I'd love to hear from you~</p>
+            <div class="cute-divider">˚ ༘♡ ⋆｡˚ ❀</div>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="contact-content">
+            <div class="contact-intro">
+                <h2>reach out & say hello</h2>
+                <p>Whether you're interested in collaborating on a project, chatting about tech and design, or just want to share a good book recommendation, I'm always <span class="highlight-text">excited to connect</span> with fellow creators and thinkers!</p>
+                <p>I try to respond to all messages within a few days ✨</p>
+            </div>
+
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <span class="contact-icon">📧</span>
+                    <h3>email me</h3>
+                    <p>For project inquiries, collaboration opportunities, or just to say hi</p>
+                    <a href="mailto:fanglinx23984.gmail.com" class="contact-link">
+                        💌 fanglinx23984@gmail.com
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <span class="contact-icon">💼</span>
+                    <h3>linkedin</h3>
+                    <p>Connect with me professionally and see my latest updates</p>
+                    <a href="https://www.linkedin.com/in/fanglin-xu-a71620308/" class="contact-link">
+                        🔗 linkedin.com/in/fanglinxu
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <span class="contact-icon">💻</span>
+                    <h3>github</h3>
+                    <p>Explore my code, contribute to projects, or start a technical discussion</p>
+                    <a href="https://github.com/fanglin0" class="contact-link">
+                        🚀 github.com/fanglin0
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <span class="contact-icon">🎮</span>
+                    <h3>github</h3>
+                    <p>Check out my games! Right now I'm working on...<br> <a href="https://github.com/fanglin0/Good-Cocoa-Great-Cocoa">Good Cocoa Bad Cocoa</a></p>
+                    <a href="https://fanglin0.itch.io" class="contact-link">
+                        🎨 itch.io/fanglin0
+                    </a>
+                </div>
+            </div>
+
+            <div class="fun-section">
+                <h3>a few things about me</h3>
+                <div class="fun-facts">
+                    <div class="fun-fact">
+                        <span class="fun-fact-emoji">☕</span>
+                        <p>My idea afternoon is spent indoors with a matcha lattes and afternoon coding sessions</p>
+                    </div>
+                    <div class="fun-fact">
+                        <span class="fun-fact-emoji">📚</span>
+                        <p>Currently reading classical literature and watching Gilmore Girls  <br>(often simultaneously)</p>
+                    </div>
+                    <div class="fun-fact">
+                        <span class="fun-fact-emoji">🍂</span>
+                        <p>Fall is my favorite season - hence the brown tones in this portfolio!</p>
+                    </div>
+                    <div class="fun-fact">
+                        <span class="fun-fact-emoji">🎮</span>
+                        <p>I love cozy games, indie narratives, and anything with beautiful pixel art </p>
+                    </div>
+                    <div class="fun-fact">
+                        <span class="fun-fact-emoji">🌱</span>
+                        <p>Passionate about sustainability, community organizing, and using tech for good</p>
+                    </div>
+                    <div class="fun-fact">
+                        <span class="fun-fact-emoji">🎨</span>
+                        <p>I believe the best projects happen with intersection of art and tech</p>
+                    </div>
+                </div>
+                <div class="availability-status">
+                    🌟 currently seeking new grad opportunities!
+                </div>
+            </div>
+        </section>
     </div>
-  </header>
 
-  <main class="container py-5">
-    <h2 class="text-pink mb-4">Get In Touch</h2>
-    <p class="mb-4">Feel free to reach out via email or connect with me through the platforms below:</p>
-    <ul class="list-unstyled fs-5">
-      <li><strong>Email:</strong> <a href="mailto:fanglinx23984@gmail.com" class="text-pink">fanglinx23984@gmail.com</a></li>
-      <li><strong>GitHub:</strong> <a href="https://github.com/fanglin0" class="text-pink" target="_blank">fanglin0</a></li>
-      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/fanglin-xu-a71620308/" class="text-pink" target="_blank">Fanglin Xu</a></li>
-      <li><strong>Itch.io:</strong> <a href="https://fanglin0.itch.io" class="text-pink" target="_blank">fanglin0</a></li>
-    </ul>
-  </main>
+    <!-- Sticker container -->
+    <div id="sticker-container"></div>
 
-  <footer class="bg-dark text-white text-center py-3 mt-auto">
-    <small>© 2025 Fanglin Xu. All rights reserved.</small>
-  </footer>
+    <script>
+        // Sticker system
+        const stickerImages = [
+            '💌', '☕', '🌸', '📱', '💝', '🦋', '✨', '🌿', '💫', '🌺',
+            '🍃', '🌼', '🐝', '🌈', '🌻', '🍯', '🌱', '🌷', '🍀', '☁️',
+            '💻', '📧', '🤝', '💼', '🎨', '📚', '🎵', '🎭', '🌙', '⭐'
+        ];
+
+        let stickerCount = 0;
+        const maxStickers = 12;
+        let lastScrollTop = 0;
+        let scrollThreshold = 120;
+        let scrollAccumulator = 0;
+
+        function createSticker() {
+            if (stickerCount >= maxStickers) return;
+            
+            const sticker = document.createElement('div');
+            const stickerEmoji = stickerImages[Math.floor(Math.random() * stickerImages.length)];
+            
+            sticker.innerHTML = stickerEmoji;
+            sticker.className = 'scroll-sticker';
+            
+            const x = Math.random() * (window.innerWidth - 60);
+            const y = Math.random() * (window.innerHeight - 60);
+            
+            sticker.style.cssText = `
+                position: fixed;
+                left: ${x}px;
+                top: ${y}px;
+                font-size: ${Math.random() * 1.5 + 1.5}rem;
+                z-index: 50;
+                pointer-events: none;
+                opacity: 0;
+                transform: scale(0) rotate(${Math.random() * 360}deg);
+                animation: stickerPop 2s ease-out forwards;
+            `;
+            
+            document.getElementById('sticker-container').appendChild(sticker);
+            stickerCount++;
+            
+            setTimeout(() => {
+                if (sticker.parentNode) {
+                    sticker.parentNode.removeChild(sticker);
+                    stickerCount--;
+                }
+            }, 4000);
+        }
+
+        // Scroll-triggered stickers
+        window.addEventListener('scroll', () => {
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDifference = Math.abs(currentScrollTop - lastScrollTop);
+            
+            scrollAccumulator += scrollDifference;
+            
+            if (scrollAccumulator >= scrollThreshold) {
+                createSticker();
+                scrollAccumulator = 0;
+            }
+            
+            lastScrollTop = currentScrollTop;
+        });
+
+        // Timed stickers
+        function randomStickerTimer() {
+            const randomTime = Math.random() * 15000 + 10000; // 10-25 seconds
+            setTimeout(() => {
+                if (Math.random() > 0.3) {
+                    createSticker();
+                }
+                randomStickerTimer();
+            }, randomTime);
+        }
+
+        randomStickerTimer();
+
+        // Contact link click stickers
+        document.querySelectorAll('.contact-link, .contact-card').forEach(element => {
+            element.addEventListener('click', () => {
+                if (Math.random() > 0.6) {
+                    createSticker();
+                }
+            });
+        });
+
+        // CSS animations for stickers
+        const stickerStyles = document.createElement('style');
+        stickerStyles.textContent = `
+            @keyframes stickerPop {
+                0% {
+                    opacity: 0;
+                    transform: scale(0) rotate(0deg);
+                }
+                30% {
+                    opacity: 1;
+                    transform: scale(1.3) rotate(15deg);
+                }
+                60% {
+                    transform: scale(1.1) rotate(-5deg);
+                }
+                100% {
+                    opacity: 0.8;
+                    transform: scale(1) rotate(0deg);
+                }
+            }
+            
+            .scroll-sticker {
+                transition: all 0.3s ease;
+                filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+            }
+            
+            .scroll-sticker:hover {
+                transform: scale(1.2) !important;
+            }
+        `;
+        document.head.appendChild(stickerStyles);
+  // clickavle availablity status to be popup window
+    </script>
 </body>
 </html>

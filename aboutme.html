@@ -4,45 +4,272 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Me - Fanglin Xu</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* === Color Palette === */
+    :root {
+      --blush: #D87FA3;
+      --light-coral: #E6A894;
+      --satin-gold: #C29F5C;
+      --arylide-yellow: #F2E394;
+      --cream: #F7F4F0;
+      --text-light: #E8DDD4;
+      --text-warm: #D4C4B0;
+      --bg-dark: #2D1B0E;
+      --bg-card: rgba(107, 74, 58, 0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* === Navigation === */
+    nav {
+      background: rgba(45, 27, 14, 0.95);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(242, 227, 148, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .logo {
+      font-family: 'Mochiy Pop P One', cursive;
+      font-size: 1.5rem;
+      color: var(--arylide-yellow);
+      text-decoration: none;
+    }
+
+    .logo:hover { color: var(--blush); }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-warm);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .nav-links a:hover {
+      color: var(--arylide-yellow);
+      background: rgba(242, 227, 148, 0.1);
+    }
+
+    /* === Content Wrapper === */
+    .content-wrapper {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 40px;
+    }
+
+    /* === Profile Section === */
+    .profile-section {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .profile-image {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--light-coral);
+      box-shadow: 0 0 30px rgba(230, 168, 148, 0.3);
+      transition: 0.4s;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(230, 168, 148, 0.5);
+    }
+
+    .name-title {
+      font-family: 'Mochiy Pop P One', cursive;
+      font-size: 3rem;
+      color: var(--arylide-yellow);
+      margin-top: 20px;
+    }
+
+    /* === About Content === */
+    .about-content {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 40px;
+      border: 1px solid rgba(242, 227, 148, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .about-content h2 {
+      font-family: 'Mochiy Pop P One', cursive;
+      font-size: 2.2rem;
+      color: var(--satin-gold);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .about-text {
+      font-size: 1.2rem;
+      color: var(--text-warm);
+      margin-bottom: 20px;
+    }
+
+    /* Resume iframe */
+    iframe {
+      margin-top: 20px;
+      border-radius: 10px;
+      border: 2px solid var(--light-coral);
+    }
+
+    /* === Footer === */
+    footer {
+      background: #1a1008;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: var(--text-warm);
+      margin-top: 40px;
+    }
+
+    /* Sticker Styles */
+    @keyframes stickerPop {
+      0% { opacity: 0; transform: scale(0) rotate(0deg); }
+      30% { opacity: 1; transform: scale(1.3) rotate(15deg); }
+      60% { transform: scale(1.1) rotate(-5deg); }
+      100% { opacity: 0.8; transform: scale(1) rotate(0deg); }
+    }
+    .scroll-sticker {
+      transition: 0.3s;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+    .scroll-sticker:hover { transform: scale(1.2) !important; }
+  </style>
 </head>
 <body>
-  <header class="bg-dark text-white py-4">
-    <div class="container d-flex justify-content-between align-items-center">
-      <h1 class="mb-0 fw-bold">Fanglin Xu</h1>
-      <nav>
-        <a href="index.html" class="text-pink me-3">Home</a>
-        <a href="aboutme.html" class="text-pink me-3">About</a>
-        <a href="project.html" class="text-pink me-3">Projects</a>
-        <a href="contact.html" class="text-pink">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="container py-5">
-    <div class="row">
-      <div class="col-md-6">
-        <h2 class="text-pink col-md-6">About Me</h2>
-        <div class="cold-md-6 text-center">
-             <img src= "assets/IMG_2878.jpg" alt="headshot of me" class="mb-4 img-fluid rounded-circle border border-light shadow " />
-             
-        </div>
-        <div class="d-flex flex-wrap gap-2 mb-4">
-            <p>I’m passionate about design and creation! I'm a coder who enjoys building interactive experiences that blend storytelling, tech, and community values.</p>
-            <p>I’ve worked on neural networks, interactive web tools, and advocacy-focused design in my past work experiences. Whether I’m coding a visual novel or analyzing ecological data, I love to combine multiple disciplines that may seem disparate into one single creation.</p>
-            <p> 
-                <a href="/assets/New Uploaded Resume-2.pdf" download="Fanglin Xu's Resume">Download my resume</a> to see what I’ve been building, learning, and imagining. You can check out some of my project demos <a href="projects.html">here</a> as well.
-            </p>
-        </div>
-        <iframe class=col-md-4" src="assets/New Uploaded Resume-2.pdf" width="100%" height="600px" class="mt-4"></iframe>
-        </div>
-      </div>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">fanglin xu</a>
+      <ul class="nav-links">
+        <li><a href="aboutme.html" class="active">about</a></li>
+        <li><a href="project.html">projects</a></li>
+        <li><a href="contact.html">contact</a></li>
+      </ul>
     </div>
-  </main>
+  </nav>
 
-  <footer class="bg-dark text-white text-center py-3 mt-auto">
-    <small>© 2025 Fanglin Xu. All rights reserved.</small>
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <!-- Profile Section -->
+    <section class="profile-section">
+      <img src="assets/IMG_2878.jpg" alt="headshot of me" class="profile-image">
+      <h1 class="name-title">Fanglin Xu</h1>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+      <h2>About Me</h2>
+      <p class="about-text">
+        I’m passionate about design and creation! I'm a coder who enjoys building interactive experiences that blend storytelling, tech, and community values.
+      </p>
+      <p class="about-text">
+        I’ve worked on neural networks, interactive web tools, and advocacy-focused design in my past work experiences. Whether I’m coding a visual novel or analyzing ecological data, I love to combine multiple disciplines into one single creation.
+      </p>
+      <p class="about-text">
+        <a href="/assets/new-uploaded-resume-2.pdf" download="Fanglin_Xu_Resume.pdf">📄 Download my resume</a> or check out some of my project demos <a href="projects.html">here</a>.
+      </p>
+      <iframe src="assets/new-uploaded-resume-2.pdf" width="100%" height="600px"></iframe>
+    </section>
+  </div>
+
+  <div id="sticker-container"></div>
+
+  <footer>
+    © 2025 Fanglin Xu. All rights reserved.
   </footer>
+
+  <!-- Sticker Script -->
+  <script>
+    const stickerImages = ['✨', '🍂', '💫', '🎨', '💻', '📚'];
+    let stickerCount = 0;
+    const maxStickers = 15;
+    let lastScrollTop = 0;
+    let scrollAccumulator = 0;
+    const scrollThreshold = 100;
+
+    function createSticker() {
+      if (stickerCount >= maxStickers) return;
+      const sticker = document.createElement('div');
+      sticker.innerHTML = stickerImages[Math.floor(Math.random() * stickerImages.length)];
+      sticker.className = 'scroll-sticker';
+      const x = Math.random() * (window.innerWidth - 60);
+      const y = Math.random() * (window.innerHeight - 60);
+      sticker.style.cssText = `
+        position: fixed;
+        left: ${x}px;
+        top: ${y}px;
+        font-size: ${Math.random() * 1.5 + 1.5}rem;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0;
+        transform: scale(0) rotate(${Math.random() * 360}deg);
+        animation: stickerPop 2s ease-out forwards;
+      `;
+      document.getElementById('sticker-container').appendChild(sticker);
+      stickerCount++;
+      setTimeout(() => {
+        sticker.remove();
+        stickerCount--;
+      }, 4000);
+    }
+
+    window.addEventListener('scroll', () => {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      scrollAccumulator += Math.abs(currentScrollTop - lastScrollTop);
+      if (scrollAccumulator >= scrollThreshold) {
+        createSticker();
+        scrollAccumulator = 0;
+      }
+      lastScrollTop = currentScrollTop;
+    });
+
+    function randomStickerTimer() {
+      const randomTime = Math.random() * 10000 + 10000;
+      setTimeout(() => {
+        if (Math.random() > 0.3) createSticker();
+        randomStickerTimer();
+      }, randomTime);
+    }
+    randomStickerTimer();
+
+    document.addEventListener('click', () => {
+      if (Math.random() > 0.8) createSticker();
+    });
+  </script>
 </body>
 </html>
